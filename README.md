@@ -1,54 +1,55 @@
-Hoi!
+Hello!
 
-Als API heb ik de Nasa Mars photo's gekozen. Er zijn 855 foto's van
-Mars gemaakt. Elke foto heeft informatie over de Rover en elke Rover heeft informatie over de camera's 
-aan boord. Ik wil dit beschikbaar stellen met Rest routes per rover en per camera. 
+For my API, I have chosen the NASA Mars photos. There are 855 photos of Mars. Each photo contains information about the Rover, and each Rover has information about the cameras on board. I want to make this available with REST routes for each rover and each camera.
 
-Om zo telkens een groepering terug te krijgen, bijvoorbeeld alle foto's van de Curiosity rover.
+This will allow for retrieving groups, for example, all photos from the Curiosity rover.
 
-## Installatie
-De volgende dependencies heb ik zelf toegevoegd na het initialiseren van de app:
+## Installation
+After initializing the app, I added the following dependencies myself:
 ```kotlin
-	implementation("io.arrow-kt:arrow-core:1.2.0")
+implementation("io.arrow-kt:arrow-core:1.2.0")
 
-	implementation("io.ktor:ktor-client-core:2.3.7")
-	implementation("io.ktor:ktor-client-cio:2.3.7")
+implementation("io.ktor:ktor-client-core:2.3.7")
+implementation("io.ktor:ktor-client-cio:2.3.7")
 
-	testImplementation("io.kotest:kotest-assertions-core:5.7.2")
-	testImplementation("io.kotest:kotest-runner-junit5:5.7.2")
-	implementation("io.kotest.extensions:kotest-assertions-arrow:1.4.0")
+testImplementation("io.kotest:kotest-assertions-core:5.7.2")
+testImplementation("io.kotest:kotest-runner-junit5:5.7.2")
+implementation("io.kotest.extensions:kotest-assertions-arrow:1.4.0")
 
-    testImplementation("com.lemonappdev:konsist:0.12.1")
+testImplementation("com.lemonappdev:konsist:0.12.1")
 ```
 
-Arrow omdat dit mooie functioneel programmeer mogelijkheden biedt. Wellicht komt dit van pas.
-Ktor als client voor de NASA API. En Kotest voor de tests, met de Arrow extensie voor Arrow specifieke tests.
+I chose Arrow for its excellent functional programming capabilities, which might be useful. Ktor as the client for the NASA API, and Kotest for testing, with the Arrow extension for Arrow-specific tests.
+
+## On-camera
+You can view the first hour of programming this project here:
+- [Part 1](https://drive.google.com/file/d/1C1cdlVcHIz8AsOqlq0SZl18VUHWmA-np/view)
+- [Part 2](https://drive.google.com/file/d/1EB-Rhe4ERNd7080eToTmEHPP8HTLV_cW/view)
 
 ## Off-camera
-Na het 1 uur programmeren heb ik nog ongeveer 30-40 min gebruikt om de volgende dingen te doen:
-- Een Hexagonal architecture structuur aanbrengen, samen met een ArchUnit test om deze architectuur te valideren
-- De controller routes snel verder geschreven
-- Een paar tests geschreven voor de controller
-- Alles een beetje netjes refactoren.
+After one hour of programming, I spent an additional 30-40 minutes to:
+- Implement a Hexagonal architecture structure, along with an ArchUnit test to validate this architecture
+- Quickly write the other controller routes
+- Write a few tests for the controller
+- Refactor everything to tidy it up a bit.
 
 ## Limitations
 - Rover names are still case-sensitive, which makes the API a bit less user-friendly
-- Network errors and related errors are not handled, so the API is not production ready
-- Missing API doc and tests for all routes
-- Delen van deze documentatie zijn engels en andere delen Engelstalig. Dit is niet consistent.
-- The fakeApi only works for the Curiosity rover data, because I initially thought these were all rovers.
+- Network errors and related errors are not handled, so the API is not production-ready
+- Missing API documentation and tests for all routes
+- The fakeApi only works for the Curiosity rover data, as I initially thought this was all the data.
 
 ## "API Docs"
-De API is te benaderen via de volgende routes:
-- GET `/` -> Geeft een lijst van alle beschikbare routes
-- GET `/mars/rovers` -> Geeft een lijst van alle rover namen
-- GET `/mars/rovers/{roverName}` -> Geeft een lijst van alle foto's gemaakt door een rover
-- GET `/mars/cameras` -> Geeft een lijst van camera types aan boord van alle rovers, gegroepeerd per rover
-- GET `/mars/cameras/{cameraName}` -> Geeft een lijst van alle foto's gemaakt door een camera type
+The API can be accessed via the following routes:
+- GET `/` -> Provides a list of all available routes
+- GET `/mars/rovers` -> Provides a list of all rover names
+- GET `/mars/rovers/{rover}` -> Provides a list of all photos taken by a rover
+- GET `/mars/cameras` -> Provides a list of camera types on board all rovers, grouped by rover
+- GET `/mars/cameras/{camera}` -> Provides a list of all photos taken by a camera type
 
-## Testen
-De tests zijn te vinden in de `test` map. De tests zijn geschreven met Kotest en Konsist (voor architectuur).
-'FHAZ' is een camera type die op 3 van de rovers aanwezig is voor als je de laatste route wilt testen.
+## Testing
+The tests can be found in the `test` directory. The tests are written with Kotest and Konsist (for architecture).
+'FHAZ' is a camera type present on 3 of the rovers, in case you want to test the last route.
 
-## Runnen
-De applicatie is te runnen met de `./gradlew run` commando. De applicatie is te benaderen op `localhost:8080`.
+## Running
+The application can be run with the `./gradlew run` command. The application is accessible at `localhost:8080`.
