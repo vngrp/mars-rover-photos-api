@@ -1,5 +1,8 @@
 Hello!
 
+So nice of you to view this project. It contains a realistic example of how my workday may proceed. The on-camera section has screenrecordings of the first hour of programming. In this project I find a public API to program with and transform the data to expose new functionality through a new API interface.
+
+## Goal
 For my API, I have chosen the NASA Mars photos. There are 855 photos of Mars. Each photo contains information about the Rover, and each Rover has information about the cameras on board. I want to make this available with REST routes for each rover and each camera.
 
 This will allow for retrieving groups, for example, all photos from the Curiosity rover.
